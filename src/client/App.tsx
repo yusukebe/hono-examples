@@ -12,12 +12,7 @@ const App = () => {
     }
     fetchData()
   }, [])
-  return (
-    <div>
-      <h2>Message from API</h2>
-      <p>{message}</p>
-    </div>
-  )
+  return <h2>{message}</h2>
 }
 
 export default App

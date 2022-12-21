@@ -1,4 +1,4 @@
-import { h, hydrate } from 'preact'
-import App from '../App'
+import { h, render } from 'preact'
+import App from './App'
 
-hydrate(<App />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
