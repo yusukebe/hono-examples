@@ -1,0 +1,19 @@
+{
+  "name": "hono-with-preact",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev --local --live-reload src/index.ts",
+    "build:client": "esbuild --bundle --sourcemap --minify --outfile=public/build/app.js src/client/index.tsx",
+    "deploy": "wrangler publish src/index.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^2.6.2",
+    "preact": "^10.11.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.16.10",
+    "wrangler": "^2.6.2"
+  }
+}
