@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "hono": "^2.6.2",
-    "preact": "^10.11.3"
+    "preact": "^10.11.3",
+    "preact-render-to-string": "^5.2.6"
   },
   "devDependencies": {
     "esbuild": "^0.16.10",

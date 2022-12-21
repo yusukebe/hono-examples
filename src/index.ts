@@ -1,10 +1,12 @@
 import { Hono } from 'hono'
-import api from './api'
-import view from './index.html'
 import { serveStatic } from 'hono/serve-static.module'
+import api from './api'
+import { html } from './html'
 
 const app = new Hono()
-app.get('/', (c) => c.html(view))
+app.get('/', (c) => {
+  return c.html('<!DOCTYPE html>' + html())
+})
 
 app.route('/api', api)
 app.get('/build/*', serveStatic({ root: './' }))
