@@ -1,11 +1,11 @@
 name = "hono-with-preact"
 compatibility_date = "2022-12-21"
 
-main = "src/index.ts"
+main = "dist/index.mjs"
 
 [build]
-command = "yarn run build:client"
+command = "yarn run build"
 
 [site]
-bucket = "./public"
+bucket = "./dist/static"
 
