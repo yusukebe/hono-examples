@@ -1,5 +1,7 @@
 import { h } from 'preact'
 import { render as renderPreact } from 'preact-render-to-string'
+import Helmet from 'preact-helmet'
+import { HelmetData } from 'preact-helmet'
 // @ts-ignore
 import manifest from '__STATIC_CONTENT_MANIFEST'
 import { bufferToString } from 'hono/utils/buffer'
@@ -9,11 +11,13 @@ import { StatusCode } from 'hono/utils/http-status'
 
 export type SSRElement = ({ path }: { path?: string }) => h.JSX.Element
 
-type Replacer = (html: string, content: string) => string
+type HTMLReplacer = (html: string, content: string) => string
+type HelmetReplacer = (html: string, head: HelmetData) => string
 type SSROptions = {
   indexPath: string
-  replacer: Replacer
+  replacer: HTMLReplacer
   notFound: SSRElement
+  helmetReplacer: HelmetReplacer
 }
 
 export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHandler => {
@@ -42,7 +46,13 @@ export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHa
       replacer = (html: string, content: string) =>
         html.replace(/<div id="root"><\/div>/, `<div id="root">${content}</div>`)
     }
-    const html = replacer(view, content)
+
+    let html = replacer(view, content)
+
+    if (options.helmetReplacer) {
+      const head = Helmet.rewind()
+      html = options.helmetReplacer(html, head)
+    }
 
     return c.html(html, statusCode)
   }

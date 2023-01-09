@@ -9,6 +9,15 @@ const app = new Hono()
 app.route('/api', api)
 app.get('/assets/*', serveStatic({ root: './public' }))
 
-app.get('*', ssr(App, { notFound: NotFound }))
+app.get(
+  '*',
+  ssr(App, {
+    notFound: NotFound,
+    helmetReplacer: (html, head) => {
+      html = html.replace(/<!--head-->/, head.title.toString())
+      return html
+    },
+  })
+)
 
 export default app

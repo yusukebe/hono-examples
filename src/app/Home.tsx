@@ -1,6 +1,7 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import Header from './components/Header'
+import Helmet from 'preact-helmet'
 
 const Home = (props: any) => {
   const [message, setMessage] = useState('')
@@ -17,6 +18,7 @@ const Home = (props: any) => {
 
   return (
     <div>
+      <Helmet title='Hello Preact' />
       <Header />
       <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
       <h2>Message from API</h2>
