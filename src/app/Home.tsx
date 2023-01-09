@@ -1,5 +1,4 @@
 import { h } from 'preact'
-import Helmet from 'preact-helmet'
 import { useEffect, useState } from 'preact/hooks'
 import Header from './components/Header'
 
@@ -18,7 +17,6 @@ const Home = (props: any) => {
 
   return (
     <div>
-      <Helmet title='Hello Preact' />
       <Header />
       <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
       <h2>Message from API</h2>
