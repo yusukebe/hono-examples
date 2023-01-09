@@ -19,6 +19,7 @@
   "dependencies": {
     "hono": "3.0.0-rc.4",
     "preact": "^10.11.3",
-    "preact-render-to-string": "^5.2.6"
+    "preact-render-to-string": "^5.2.6",
+    "preact-router": "^4.1.0"
   }
 }

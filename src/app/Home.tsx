@@ -1,8 +1,8 @@
 import { h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
-import Header from './Header'
+import Header from './components/Header'
 
-const App = () => {
+const Home = (props: any) => {
   const [message, setMessage] = useState('')
   const [count, setCount] = useState(0)
 
@@ -25,4 +25,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Home
