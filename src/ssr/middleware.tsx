@@ -1,12 +1,11 @@
 import { h } from 'preact'
+import Helmet, { HelmetData } from 'preact-helmet'
 import { render as renderPreact } from 'preact-render-to-string'
-import Helmet from 'preact-helmet'
-import { HelmetData } from 'preact-helmet'
 // @ts-ignore
 import manifest from '__STATIC_CONTENT_MANIFEST'
+import type { MiddlewareHandler } from 'hono'
 import { bufferToString } from 'hono/utils/buffer'
 import { getContentFromKVAsset } from 'hono/utils/cloudflare'
-import type { MiddlewareHandler } from 'hono'
 import { StatusCode } from 'hono/utils/http-status'
 
 export type SSRElement = ({ path }: { path?: string }) => h.JSX.Element
@@ -37,9 +36,10 @@ export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHa
 
     const buffer = await getContentFromKVAsset(options.indexPath || 'public/index.html', {
       manifest: manifest,
-      namespace: c.env.__STATIC_CONTENT,
+      namespace: c.env?.__STATIC_CONTENT,
     })
-    const view = bufferToString(buffer)
+
+    const view = bufferToString(buffer!)
     let replacer = options.replacer
 
     if (!replacer) {

@@ -1,8 +1,7 @@
-import Router from 'preact-router'
 import { h } from 'preact'
-
-import Home from './app/Home'
+import Router from 'preact-router'
 import About from './app/About'
+import Home from './app/Home'
 
 const App = ({ path }: { path?: string }) => {
   return (

@@ -1,7 +1,7 @@
 import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
-import Header from './components/Header'
 import Helmet from 'preact-helmet'
+import { useEffect, useState } from 'preact/hooks'
+import Header from './components/Header'
 
 const Home = (props: any) => {
   const [message, setMessage] = useState('')
