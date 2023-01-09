@@ -12,18 +12,31 @@ declare module 'hono' {
   }
 }
 
-export const ssr = (App: any): MiddlewareHandler => {
+export type SSRElement = ({ path }: { path?: string }) => h.JSX.Element
+
+type Replacer = (html: string, content: string) => string
+type SSROptions = {
+  indexPath: string
+  replacer: Replacer
+}
+
+const defaultOptions: SSROptions = {
+  indexPath: 'public/index.html',
+  replacer: (html: string, content: string) =>
+    html.replace(/<div id="root"><\/div>/, `<div id="root">${content}</div>`),
+}
+
+export const ssr = (App: SSRElement, options: SSROptions = defaultOptions): MiddlewareHandler => {
   return async (c, _next) => {
     const path = new URL(c.req.url).pathname
-    const content = renderPreact(<App url={path} />)
+    const content = renderPreact(<App path={path} />)
 
-    const buffer = await getContentFromKVAsset('public/index.html', {
+    const buffer = await getContentFromKVAsset(options.indexPath, {
       manifest: manifest,
       namespace: c.env.__STATIC_CONTENT,
     })
     const view = bufferToString(buffer)
-
-    const html = view.replace(/<div id="root"><\/div>/, `<div id="root">${content}</div>`)
+    const html = options.replacer(view, content)
 
     return c.html(html)
   }
