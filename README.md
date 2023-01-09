@@ -7,19 +7,25 @@
 ## Hono SSR Middleware
 
 This is made possible by Hono middleware.
+But you just edit `src/App.tsx`.
 
 ```tsx
-import { ssr } from './ssr-middleware'
-
+import Router from 'preact-router'
 import { h } from 'preact'
-import App from './app/App'
 
-const app = new Hono()
+import Home from './app/Home'
+import About from './app/About'
 
-app.get('*', ssr()) // SSR Middleware
-app.get('/', async (c) => {
-  return c.get('renderer')(<App />)
-})
+const App = ({ path }: { path?: string }) => {
+  return (
+    <Router url={path}>
+      <Home path='/' />
+      <About path='/about' />
+    </Router>
+  )
+}
+
+export default App
 ```
 
 ## Author
