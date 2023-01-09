@@ -13,7 +13,7 @@ type Replacer = (html: string, content: string) => string
 type SSROptions = {
   indexPath: string
   replacer: Replacer
-  notFound?: SSRElement
+  notFound: SSRElement
 }
 
 export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHandler => {
