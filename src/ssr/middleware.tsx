@@ -19,7 +19,7 @@ type SSROptions = {
   helmetReplacer: HelmetReplacer
 }
 
-export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHandler => {
+export const ssr = (App: SSRElement, options?: Partial<SSROptions>): MiddlewareHandler => {
   return async (c, next) => {
     const path = new URL(c.req.url).pathname
     let content = renderPreact(<App path={path} />)
@@ -34,13 +34,13 @@ export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHa
       }
     }
 
-    const buffer = await getContentFromKVAsset(options.indexPath || 'public/index.html', {
+    const buffer = await getContentFromKVAsset(options?.indexPath || 'public/index.html', {
       manifest: manifest,
       namespace: c.env?.__STATIC_CONTENT,
     })
 
     const view = bufferToString(buffer!)
-    let replacer = options.replacer
+    let replacer = options?.replacer
 
     if (!replacer) {
       replacer = (html: string, content: string) =>
@@ -49,7 +49,7 @@ export const ssr = (App: SSRElement, options: Partial<SSROptions>): MiddlewareHa
 
     let html = replacer(view, content)
 
-    if (options.helmetReplacer) {
+    if (options?.helmetReplacer) {
       const head = Helmet.rewind()
       html = options.helmetReplacer(html, head)
     }
