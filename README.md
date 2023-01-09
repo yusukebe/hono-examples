@@ -8,7 +8,7 @@
 
 This is made possible by Hono middleware.
 
-```ts
+```tsx
 import { ssr } from './ssr-middleware'
 
 import { h } from 'preact'
@@ -18,8 +18,7 @@ const app = new Hono()
 
 app.get('*', ssr()) // SSR Middleware
 app.get('/', async (c) => {
-  const html = await c.get('renderer')(<App />)
-  return c.html(html)
+  return c.get('renderer')(<App />)
 })
 ```
 
