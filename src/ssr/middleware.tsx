@@ -6,12 +6,6 @@ import { bufferToString } from 'hono/utils/buffer'
 import { getContentFromKVAsset } from 'hono/utils/cloudflare'
 import type { MiddlewareHandler } from 'hono'
 
-declare module 'hono' {
-  interface ContextVariableMap {
-    renderer: (App: any) => Promise<Response>
-  }
-}
-
 export type SSRElement = ({ path }: { path?: string }) => h.JSX.Element
 
 type Replacer = (html: string, content: string) => string
