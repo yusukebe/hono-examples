@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h, JSX } from 'preact'
 import Helmet, { HelmetData } from 'preact-helmet'
 import { render as renderPreact } from 'preact-render-to-string'
 // @ts-ignore
@@ -8,7 +8,7 @@ import { bufferToString } from 'hono/utils/buffer'
 import { getContentFromKVAsset } from 'hono/utils/cloudflare'
 import { StatusCode } from 'hono/utils/http-status'
 
-export type SSRElement = ({ path }: { path?: string }) => h.JSX.Element
+export type SSRElement = ({ path }: { path?: string }) => JSX.Element
 
 type HTMLReplacer = (html: string, content: string) => string
 type HelmetReplacer = (html: string, head: HelmetData) => string
