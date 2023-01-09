@@ -3,7 +3,7 @@ import { render as renderPreact } from 'preact-render-to-string'
 import manifest from '__STATIC_CONTENT_MANIFEST'
 import { bufferToString } from 'hono/utils/buffer'
 import { getContentFromKVAsset } from 'hono/utils/cloudflare'
-import { MiddlewareHandler } from 'hono'
+import type { MiddlewareHandler } from 'hono'
 
 declare module 'hono' {
   interface ContextVariableMap {
