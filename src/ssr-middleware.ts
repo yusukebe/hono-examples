@@ -7,13 +7,13 @@ import type { MiddlewareHandler } from 'hono'
 
 declare module 'hono' {
   interface ContextVariableMap {
-    renderer: (App: any) => Promise<string>
+    renderer: (App: any) => Promise<Response>
   }
 }
 
 export const ssr = (): MiddlewareHandler => {
   return async (c, next) => {
-    const renderer = async (App: any): Promise<string> => {
+    const renderer = async (App: any): Promise<Response> => {
       const buffer = await getContentFromKVAsset('public/index.html', {
         manifest: manifest,
         namespace: c.env.__STATIC_CONTENT,
@@ -21,7 +21,7 @@ export const ssr = (): MiddlewareHandler => {
       const view = bufferToString(buffer)
       const content = renderPreact(App)
       const html = view.replace(/<div id="root"><\/div>/, `<div id="root">${content}</div>`)
-      return html
+      return c.html(html)
     }
     c.set('renderer', renderer)
     await next()
