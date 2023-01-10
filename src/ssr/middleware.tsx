@@ -1,4 +1,4 @@
-import { h, JSX } from 'preact'
+import { JSX } from 'preact'
 import { render as renderPreact } from 'preact-render-to-string'
 // @ts-ignore
 import manifest from '__STATIC_CONTENT_MANIFEST'

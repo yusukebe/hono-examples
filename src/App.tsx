@@ -1,4 +1,3 @@
-import { h } from 'preact'
 import Router from 'preact-router'
 import About from './app/About'
 import Home from './app/Home'
