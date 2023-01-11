@@ -25,7 +25,7 @@ export const ssr = (App: SSRElement, options?: Partial<SSROptions>): MiddlewareH
     let statusCode: StatusCode = 200
 
     if (content === '') {
-      if (options.notFound) {
+      if (options?.notFound) {
         content = renderPreact(options.notFound({ path }))
         statusCode = 404
       } else {
