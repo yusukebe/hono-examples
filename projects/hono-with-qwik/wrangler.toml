@@ -1,0 +1,6 @@
+name = "hono-with-qwik"
+main = "server/entry.workers.mjs"
+compatibility_date = "2023-01-10"
+
+[site]
+bucket = "./dist"
