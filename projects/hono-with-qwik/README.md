@@ -26,7 +26,7 @@ This is WIP. It may be hosted on `github.com/honojs/middleware`.
 
 ## Author
 
-Yusuke Wada <https://github.com/yusukebe
+Yusuke Wada <https://github.com/yusukebe>
 
 ## License
 
