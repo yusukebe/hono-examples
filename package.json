@@ -1,0 +1,10 @@
+{
+  "name": "hono-examples",
+  "version": "0.0.0",
+  "workspaces": [
+    "projects/*"
+  ],
+  "private": true,
+  "license": "MIT",
+  "packageManager": "yarn@3.4.1"
+}

@@ -1,0 +1,17 @@
+dist
+node_modules
+package-lock.json
+yarn.lock
+bun.lockb
+yarn-error.log
+
+# Output of 'npm pack'
+*.tgz
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
