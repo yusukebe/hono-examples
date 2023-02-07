@@ -5,7 +5,7 @@ const app = new Hono()
 
 app.get('/api', (c) => {
   return c.json({
-    message: 'Hello!',
+    message: 'Hello',
   })
 })
 
