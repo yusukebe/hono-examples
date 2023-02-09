@@ -1,6 +1,6 @@
+import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import { handle } from 'hono/nextjs'
-import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
 
 export const config = {

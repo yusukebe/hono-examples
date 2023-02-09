@@ -1,6 +1,7 @@
+import type { InferResponseType } from 'hono/client'
+import { hc } from 'hono/client'
 import { useEffect, useState } from 'react'
-import { hc, InferResponseType } from 'hono/client'
-import { AppType } from './api/hello'
+import type { AppType } from './api/hello'
 
 export default function Home() {
   const client = hc<AppType>('/api')
