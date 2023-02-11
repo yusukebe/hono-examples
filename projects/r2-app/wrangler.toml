@@ -1,0 +1,6 @@
+name = "r2-app"
+compatibility_date = "2023-01-01"
+
+[[r2_buckets]]
+binding = 'MY_BUCKET'
+bucket_name = 'r2-app'
