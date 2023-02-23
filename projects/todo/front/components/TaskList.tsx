@@ -9,6 +9,9 @@ const $get = client.tasks.$get
 
 const fetcher = async (arg: InferRequestType<typeof $get>) => {
   const res = await $get(arg)
+  if (res.status !== 200) {
+    throw new Error(res.statusText)
+  }
   return await res.json()
 }
 
