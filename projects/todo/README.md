@@ -3,6 +3,8 @@
 ## Stacks
 
 - Hono
+- Zod
+- SWR
 - Cloudflare Pages
 - Cloudflare D1
 
