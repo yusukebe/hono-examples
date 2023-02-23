@@ -1,6 +1,6 @@
 # Todo List
 
-## Stacks
+## Stack
 
 - Hono
 - Zod
