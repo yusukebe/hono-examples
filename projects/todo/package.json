@@ -1,0 +1,34 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev --compatibility-date=2023-02-05 --d1=DB --persist -- yarn vite",
+    "build": "vite build",
+    "deploy": "yarn build && wrangler pages publish pages"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230215.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "better-sqlite3": "7.6.2",
+    "prettier": "^2.8.4",
+    "vite": "^4.1.1",
+    "wrangler": "^2.9.1"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@hono/zod-validator": "^0.0.6",
+    "framer-motion": "^9.0.4",
+    "hono": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swr": "^2.0.3",
+    "zod": "3.19.1"
+  }
+}

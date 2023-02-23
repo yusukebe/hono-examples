@@ -1,0 +1,5 @@
+node_modules
+pages
+yarn.lock
+.wrangler
+wrangler.toml
